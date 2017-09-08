@@ -16,7 +16,6 @@ class App {
   }
 
   private middleware(): void {
-    this.app.use(cors())
     this.app.use(logger('dev'))
     this.app.use(bodyParser.json())
     this.app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,7 +29,7 @@ class App {
       })
     })
     this.app.use('/', router)
-    this.app.use('/api/v1/monsters', MonsterRouter)
+    this.app.use('/api/v1/monsters', cors(), MonsterRouter)
   }
 
 }
