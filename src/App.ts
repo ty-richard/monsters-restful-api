@@ -1,5 +1,6 @@
 import * as path from 'path'
 import * as express from 'express'
+import * as cors from 'cors'
 import * as logger from 'morgan'
 import * as bodyParser from 'body-parser'
 import MonsterRouter from './routes/MonsterRouter'
@@ -15,6 +16,7 @@ class App {
   }
 
   private middleware(): void {
+    this.app.use(cors())
     this.app.use(logger('dev'))
     this.app.use(bodyParser.json())
     this.app.use(bodyParser.urlencoded({ extended: false }))
